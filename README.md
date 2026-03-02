@@ -57,27 +57,28 @@ True
 
 ## 3. Installation
 
-We recommend using Conda.
+ARG_CMCRR uses Conda for environment management to ensure reproducibility.
 
-### Step 1: Create environment
+### Step 1: Clone Repository
 
 ```bash
-conda create -n arg_cmcrr python=3.8
+git clone https://github.com/hred-ux/ARG-CMCRR
+cd ARG_CMCRR
+```
+
+### Step 2: Create Environment
+
+A fully specified computational environment is provided via environment.yml.
+
+Create the environment:
+
+```bash
+conda env create -f environment.yml
+```
+
+Activate the environment:
+```bash
 conda activate arg_cmcrr
-```
-
-### Step 2: Install PyTorch (GPU version)
-
-Example for CUDA 11.8:
-
-```bash
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
-```
-
-### Step 3: Install dependencies
-
-```bash
-pip install numpy pandas biopython
 ```
 ---
 
