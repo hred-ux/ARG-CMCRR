@@ -62,7 +62,7 @@ ARG_CMCRR uses Conda for environment management to ensure reproducibility.
 ### Step 1: Clone Repository
 
 ```bash
-git clone https://github.com/hred-ux/ARG-CMCRR
+git clone https://github.com/hred-ux/ARG-CMCRR.git
 cd ARG_CMCRR
 ```
 
