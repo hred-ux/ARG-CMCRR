@@ -63,9 +63,17 @@ model_class.to(DEVICE).eval()
 model_mech.to(DEVICE).eval()
 
 print("Loading ESM-2 model...")
-esm_path = os.path.join(current_dir, "esm2", "esm2-650m")
-tokenizer = AutoTokenizer.from_pretrained(esm_path, do_lower_case=False)
-model_esm = AutoModel.from_pretrained(esm_path).to(DEVICE).eval()
+
+esm_model_dir = os.path.join(current_dir, "models", "esm2_t33_650M")
+
+if not os.path.exists(esm_model_dir):
+    raise FileNotFoundError(
+        f"ESM-2 model not found at {esm_model_dir}. "
+        "Please download the model and place it in the 'models/' directory."
+    )
+
+tokenizer = AutoTokenizer.from_pretrained(esm_model_dir, do_lower_case=False)
+model_esm = AutoModel.from_pretrained(esm_model_dir).to(DEVICE).eval()
 model_esm = model_esm.half()
 
 print("Loading XGBoost model...")
@@ -150,6 +158,13 @@ def run_blast_multi(
         num_threads=8,
 ):
     blastp_path = os.path.join(current_dir, "blast", "bin", "blastp")
+  
+    if not os.path.exists(blastp_path):
+        raise FileNotFoundError(
+            "BLAST executable not found.\n"
+            "Please download NCBI BLAST+ and place it in:\n"
+            "ARG_CMCRR/blast/bin/"
+        )
     cmd = [
         blastp_path,
         "-query", query_fasta,
@@ -402,3 +417,4 @@ def lsaa_predict_with_risk(input_file, outfile):
 
     pd.DataFrame(results).to_csv(outfile, index=False)
     print(f"Results saved to {outfile}")
+
