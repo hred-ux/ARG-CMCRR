@@ -81,8 +81,39 @@ Activate the environment:
 conda activate arg_cmcrr
 ```
 ---
+## 4. Download Required External Resources
 
-## 4. Usage
+ARG_CMCRR requires two external resources:
+
+* ESM-2 protein language model
+
+* NCBI BLAST+
+
+These resources must be downloaded manually before running the program.
+
+### 4.1 Download ESM-2 Model
+
+ARG_CMCRR uses the ESM-2 (650M) protein language model.
+
+Download from HuggingFace:
+```bash
+https://huggingface.co/facebook/esm2_t33_650M_UR50D
+```
+After downloading, place the model files in the following directory:
+```bash
+ARG_CMCRR/models/esm2_t33_650M/
+```
+### 4.2 Install NCBI BLAST+
+
+Download NCBI BLAST+ from:
+```bash
+https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/
+```
+After downloading and extracting, place the BLAST binaries in:
+```bash
+ARG_CMCRR/blast/bin/
+```
+## 5. Usage
 
 ### General Command Structure
 
@@ -96,62 +127,40 @@ python ARG_CMCRR.py \
 ```
 ---
 
-## 5. Supported Modes
+## 6. Supported Modes
 
-### 5.1 Full-Length Amino Acid Sequences (Classification + Risk)
-
-```
-python ARG_CMCRR.py \
-    --input input.fasta \
-    --type aa \
-    --length l \
-    --outfile results \
-    --risk True
-```
-
-### 5.2 Full-Length Amino Acid Sequences (Classification Only)
+### 6.1 Full-Length Amino Acid Sequences (Classification + Risk)
 
 ```
-python ARG_CMCRR.py \
-    --input input.fasta \
-    --type aa \
-    --length l \
-    --outfile results \
-    --risk False
+python ARG_CMCRR.py --input input.fasta  --type aa  --length l   --outfile results   --risk True
 ```
 
-### 5.3 Full-Length Nucleotide Sequences
+### 6.2 Full-Length Amino Acid Sequences (Classification Only)
 
 ```
-python ARG_CMCRR.py \
-    --input input.fasta \
-    --type nt \
-    --length l \
-    --outfile results
+python ARG_CMCRR.py --input input.fasta  --type aa  --length l   --outfile results   --risk False
 ```
 
-### 5.4 Short Amino Acid Reads (30–50 aa)
+### 6.3 Full-Length Nucleotide Sequences
 
 ```
-python ARG_CMCRR.py \
-    --input input.fasta \
-    --type aa \
-    --length s \
-    --outfile results
+python ARG_CMCRR.py --input input.fasta  --type nt  --length l   --outfile results  
 ```
 
-### 5.5 Short Nucleotide Reads (90–150 nt)
+### 6.4 Short Amino Acid Reads
 
 ```
-python ARG_CMCRR.py \
-    --input input.fasta \
-    --type nt \
-    --length s \
-    --outfile results
+python ARG_CMCRR.py --input input.fasta  --type aa  --length s   --outfile results 
+```
+
+### 6.5 Short Nucleotide Reads 
+
+```
+python ARG_CMCRR.py --input input.fasta  --type nt  --length s   --outfile results 
 ```
 ---
 
-## 6. Parameter Description
+## 7. Parameter Description
 
 | Parameter           | Description                                                        |
 | ------------------- | ------------------------------------------------------------------ |
@@ -163,7 +172,7 @@ python ARG_CMCRR.py \
 
 ---
 
-## 7. Input Format
+## 8. Input Format
 
 Standard FASTA format is required:
 
@@ -174,7 +183,7 @@ MKTLLVAV...
 ```
 ---
 
-## 8. Output
+## 9. Output
 
 The output file includes:
 
@@ -187,7 +196,7 @@ The output file includes:
 * Blast_22_risk (if enabled risk)
 ---
 
-## 9. Internal Model Routing
+## 10. Internal Model Routing
 
 Depending on input parameters, ARG_CMCRR automatically dispatches prediction tasks to different modules:
 
@@ -201,7 +210,7 @@ Depending on input parameters, ARG_CMCRR automatically dispatches prediction tas
 
 ---
 
-## 10. Notes and Limitations
+## 11. Notes and Limitations
 
 * GPU is mandatory.
 * Risk prediction is supported **only for full-length amino acid sequences**.
@@ -210,13 +219,13 @@ Depending on input parameters, ARG_CMCRR automatically dispatches prediction tas
 
 ---
 
-## 11. Citation
+## 12. Citation
 
 ARG_CMCRR 
 
 ---
 
-## 12. Contact
+## 13. Contact
 
 For questions, bug reports, or collaboration inquiries, please open an Issue in the repository.
 
