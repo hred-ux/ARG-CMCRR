@@ -63,7 +63,7 @@ ARG_CMCRR uses Conda for environment management to ensure reproducibility.
 
 ```bash
 git clone https://github.com/hred-ux/ARG-CMCRR.git
-cd ARG_CMCRR
+cd ARG-CMCRR
 ```
 
 ### Step 2: Create Environment
@@ -73,7 +73,7 @@ A fully specified computational environment is provided via environment.yml.
 Create the environment:
 
 ```bash
-conda env create -f environment.yml
+conda env create -n arg_cmcrr -f environment.yml
 ```
 
 Activate the environment:
