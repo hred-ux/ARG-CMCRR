@@ -6,24 +6,38 @@ parser = argparse.ArgumentParser(
     prog='ARG_CMCRR',
     formatter_class=argparse.RawDescriptionHelpFormatter,
     description=textwrap.dedent("""\
-    ARG_CMCRR: Classification and risk assessment of antibiotic resistance genes based on deep learning.
-   --------------------------------------------------------------------------------------------------------
+    ╔══════════════════════════════════════════════════════════════════════════════╗
+    ║                             ARG_CMCRR                                        ║
+    ║     Deep Learning-Based Classification and Risk Assessment of                ║
+    ║                  Antibiotic Resistance Genes (ARGs)                          ║
+    ╚══════════════════════════════════════════════════════════════════════════════╝
 
-    The input can be long amino acid sequences(full length), long nucleotide sequences, 
-    short amino acid reads (30-50aa), short nucleotide reads (90-150nt) in fasta format.
-    
-    USAGE:
-        for full-length
-            python ARG_CMCRR.py --input input_path_data --type aa/nt --length l  --outname output_file_name  --risk True/False
-        for short reads
-            python ARG_CMCRR.py --input input_path_data --type aa/nt --length s  --outname output_file_name  --risk True/False
+    SUPPORTED INPUT TYPES
+    ─────────────────────
+      • Full-length amino acid sequences     (FASTA, .aa)
+      • Full-length nucleotide sequences     (FASTA, .nt)
+      • Short amino acid reads               (FASTA, 30–50 aa)
+      • Short nucleotide reads               (FASTA, 90–150 nt)
 
-    general options:
-        --input/-i    the test file as input
-        --type/-t     molecular type of your test data (aa for amino acid, nt for nucleotide)
-        --model/-m    the model you assign to make the prediction (argmcr-l for long sequences, argmcr-s for short reads) 
-        --outname/-on  the output file name
-        --risk/-r      the risk level of ARG only supports the input of long amino acid sequences.
+    USAGE
+    ─────
+      Full-length sequences:
+        python ARG_CMCRR.py --input input_path_data --type aa/nt --length l  --outname output_file_name  --risk True/False
+      Short reads:
+        python ARG_CMCRR.py --input input_path_data --type aa/nt --length s  --outname output_file_name  --risk True/False
+
+    ARGUMENTS
+    ─────────
+      -i,  --input      Path to the input FASTA file.
+      -t,  --type       Molecule type of the input sequences.（aa  →  amino acid sequences； nt  →  nucleotide sequences）
+      -l,  --length      Length category of the input sequences.
+                          l  →  full-length sequences (aa: full-length | nt: full-length)
+                          s  →  short reads           (aa: 30–50 aa    | nt: 90–150 nt)
+      -on, --outname    Path for the output result file.
+      -r,  --risk       (Optional) Predict the ARG risk level.
+                          True   →  enable risk assessment
+                          False  →  skip risk assessment
+                        Only supported for full-length amino acid (aa) input.
         
     """))
 
