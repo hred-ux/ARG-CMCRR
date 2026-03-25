@@ -103,16 +103,20 @@ After downloading, place the model files in the following directory:
 ```bash
 ARG_CMCRR/models/esm2_t33_650M/
 ```
+<img width="293" height="421" alt="image" src="https://github.com/user-attachments/assets/e05a0d64-8790-42a8-945a-ad19747b74ab" />
+
 ### 4.2 Install NCBI BLAST+
 
 Download NCBI BLAST+ from:
 ```bash
 https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/
 ```
-After downloading and extracting, place the BLAST binaries in:
+After downloading and extracting, please copy the bin file to the blast directory. The directory structure is as follows:
 ```bash
 ARG_CMCRR/blast/bin/
 ```
+<img width="293" height="424" alt="image" src="https://github.com/user-attachments/assets/4aff3ec4-ccac-455e-a6f4-911e8ce1dcc7" />
+
 ## 5. Usage
 
 ### General Command Structure
@@ -126,12 +130,16 @@ python ARG_CMCRR.py \
     --risk <True|False>
 ```
 
---input/-i    the test file as input
---type/-t     molecular type of your test data (aa for amino acid, nt for nucleotide)
---model/-m    the model you assign to make the prediction (argmcr-l for long sequences, argmcr-s for short reads) 
---outname/-on  the output file name
---risk/-r      the risk level of ARG only supports the input of long amino acid sequences.
-        
+     -i,  --input      Path to the input FASTA file.
+     -t,  --type       Molecule type of the input sequences.（aa  →  amino acid sequences； nt  →  nucleotide sequences）
+     -l,  --length      Length category of the input sequences.
+                          l  →  full-length sequences (aa: full-length | nt: full-length)
+                          s  →  short reads           (aa: 30–50 aa    | nt: 90–150 nt)
+     -on, --outname    Path for the output result file.
+     -r,  --risk       (Optional) Predict the ARG risk level.
+                          True   →  enable risk assessment
+                          False  →  skip risk assessment
+                        Only supported for full-length amino acid (aa) input.  
 ---
 
 ## 6. Supported Modes
@@ -141,6 +149,10 @@ python ARG_CMCRR.py \
 ```
 python ARG_CMCRR.py --input input_data_path  --type aa  --length l   --outfile results   --risk True
 ```
+> 💡 **Try it out:** A sample test file is provided at `fastafile/aa_long_test.fasta`. You can use it to verify your installation:
+> ```
+> python ARG_CMCRR.py --input fastafile/aa_long_test.fasta  --type aa  --length l   --outfile results   --risk True
+> ```
 
 ### 6.2 Full-Length Amino Acid Sequences (Classification Only)
 
