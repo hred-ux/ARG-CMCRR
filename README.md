@@ -129,7 +129,6 @@ python ARG_CMCRR.py \
     --outfile <output_name> \
     --risk <True|False>
 ```
-
      -i,  --input      Path to the input FASTA file.
      -t,  --type       Molecule type of the input sequences.（aa  →  amino acid sequences； nt  →  nucleotide sequences）
      -l,  --length      Length category of the input sequences.
@@ -179,19 +178,7 @@ python ARG_CMCRR.py --input input_data_path  --type nt  --length s   --outfile r
 ```
 ---
 
-## 7. Parameter Description
-
-| Parameter           | Description                                                        |
-| ------------------- | ------------------------------------------------------------------ |
-| `--input` / `-i`    | Input FASTA file                                                   |
-| `--type` / `-t`     | Molecular type (`aa` or `nt`)                                      |
-| `--length` / `-l`   | Sequence type: `l` (long) or `s` (short)                           |
-| `--outfile` / `-on` | Output file name                                                   |
-| `--risk` / `-r`     | Enable ARG risk ranking (only valid for long amino acid sequences) |
-
----
-
-## 8. Input Format
+## 7. Input Format
 
 Standard FASTA format is required:
 
@@ -202,7 +189,7 @@ MKTLLVAV...
 ```
 ---
 
-## 9. Output
+## 8. Output
 
 The output file includes:
 
@@ -215,7 +202,7 @@ The output file includes:
 * Blast_22_risk (if enabled risk)
 ---
 
-## 10. Internal Model Routing
+## 9. Internal Model Routing
 
 Depending on input parameters, ARG_CMCRR automatically dispatches prediction tasks to different modules:
 
@@ -229,7 +216,7 @@ Depending on input parameters, ARG_CMCRR automatically dispatches prediction tas
 
 ---
 
-## 11. Notes and Limitations
+## 10. Notes and Limitations
 
 * GPU is mandatory.
 * Risk prediction is supported **only for full-length amino acid sequences**.
@@ -238,13 +225,13 @@ Depending on input parameters, ARG_CMCRR automatically dispatches prediction tas
 
 ---
 
-## 12. Citation
+## 11. Citation
 
 ARG_CMCRR 
 
 ---
 
-## 13. Contact
+## 12. Contact
 
 For questions, bug reports, or collaboration inquiries, please open an Issue in the repository.
 
