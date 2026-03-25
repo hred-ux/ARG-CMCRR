@@ -125,6 +125,13 @@ python ARG_CMCRR.py \
     --outfile <output_name> \
     --risk <True|False>
 ```
+
+--input/-i    the test file as input
+--type/-t     molecular type of your test data (aa for amino acid, nt for nucleotide)
+--model/-m    the model you assign to make the prediction (argmcr-l for long sequences, argmcr-s for short reads) 
+--outname/-on  the output file name
+--risk/-r      the risk level of ARG only supports the input of long amino acid sequences.
+        
 ---
 
 ## 6. Supported Modes
@@ -132,31 +139,31 @@ python ARG_CMCRR.py \
 ### 6.1 Full-Length Amino Acid Sequences (Classification + Risk)
 
 ```
-python ARG_CMCRR.py --input input.fasta  --type aa  --length l   --outfile results   --risk True
+python ARG_CMCRR.py --input input_data_path  --type aa  --length l   --outfile results   --risk True
 ```
 
 ### 6.2 Full-Length Amino Acid Sequences (Classification Only)
 
 ```
-python ARG_CMCRR.py --input input.fasta  --type aa  --length l   --outfile results   --risk False
+python ARG_CMCRR.py --input input_data_path  --type aa  --length l   --outfile results   --risk False
 ```
 
 ### 6.3 Full-Length Nucleotide Sequences
 
 ```
-python ARG_CMCRR.py --input input.fasta  --type nt  --length l   --outfile results  
+python ARG_CMCRR.py --input input_data_path  --type nt  --length l   --outfile results  
 ```
 
 ### 6.4 Short Amino Acid Reads
 
 ```
-python ARG_CMCRR.py --input input.fasta  --type aa  --length s   --outfile results 
+python ARG_CMCRR.py --input input_data_path  --type aa  --length s   --outfile results 
 ```
 
 ### 6.5 Short Nucleotide Reads 
 
 ```
-python ARG_CMCRR.py --input input.fasta  --type nt  --length s   --outfile results 
+python ARG_CMCRR.py --input input_data_path  --type nt  --length s   --outfile results 
 ```
 ---
 
