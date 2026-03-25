@@ -28,7 +28,7 @@ parser = argparse.ArgumentParser(
     """))
 
 parser.print_help()
-parser.add_argument('-i', '--input', required=False, default='/hy-tmp/github_script/fastafile/aa_long_test.fasta', help='the test data as input')
+parser.add_argument('-i', '--input', required=False, default='./fastafile/aa_long_test.fasta', help='the test data as input')
 parser.add_argument('-t', '--type', required=False, default='aa', choices=['aa', 'nt'], help='molecular type of your input file')
 parser.add_argument('-l', '--length', required=False, default='l', choices=['s', 'l'],
                     help="Output format: 's' (short sequence) or 'l' (long sequence). Default: 'l'")
