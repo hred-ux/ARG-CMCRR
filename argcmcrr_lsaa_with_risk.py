@@ -1,6 +1,6 @@
 import torch
 from utils import process_lsaa
-from new_classifier_short import RNNClassifier
+from classifier import Classifier
 import pandas as pd
 from tqdm import tqdm
 import numpy as np
@@ -12,14 +12,11 @@ import subprocess
 import os
 
 AR_NAME_TO_LABEL = {'beta-lactam': 0, 'bacitracin': 1, 'multidrug': 2, 'MLS': 3, 'aminoglycoside': 4, 'polymyxin': 5,
-                    'fosfomycin': 6,
-                    'quinolone': 7, 'chloramphenicol': 8, 'tetracycline': 9, 'glycopeptide': 10, 'peptide': 11,
-                    'sulfonamide': 12, 'trimethoprim': 13,
-                    'novobiocin': 14, 'rifamycin': 15, 'nonarg': 16, 'others': 17}
+                    'fosfomycin': 6,'quinolone': 7, 'chloramphenicol': 8, 'tetracycline': 9, 'glycopeptide': 10, 'peptide': 11,
+                    'sulfonamide': 12, 'trimethoprim': 13,'novobiocin': 14, 'rifamycin': 15, 'nonarg': 16, 'others': 17}
 ME_NAME_TO_LABEL = {
     'antibiotic inactivation': 0, 'antibiotic target alteration': 1, 'antibiotic efflux': 2,
-    'antibiotic target replacement': 3,
-    'antibiotic target protection': 4, 'others': 5
+    'antibiotic target replacement': 3, 'antibiotic target protection': 4, 'others': 5
 }
 
 LABEL_TO_AR_NAME = {v: k for k, v in AR_NAME_TO_LABEL.items()}
@@ -35,13 +32,13 @@ HIDDEN_DIM = 128
 NUM_CLASSES = 18
 NUM_MECHANISM = 6
 
-model_class = RNNClassifier(
+model_class = Classifier(
     vocab_size=VOCAB_SIZE,
     embedding_dim=EMBEDDING_DIM,
     hidden_dim=HIDDEN_DIM,
     num_classes=NUM_CLASSES
 )
-model_mech = RNNClassifier(
+model_mech = Classifier(
     vocab_size=VOCAB_SIZE,
     embedding_dim=EMBEDDING_DIM,
     hidden_dim=HIDDEN_DIM,
@@ -64,12 +61,12 @@ model_mech.to(DEVICE).eval()
 
 print("Loading ESM-2 model...")
 
-esm_model_dir = os.path.join(current_dir, "models", "esm2_t33_650M")
+esm_model_dir = os.path.join(current_dir, "esm2_t33_650M")
 
 if not os.path.exists(esm_model_dir):
     raise FileNotFoundError(
         f"ESM-2 model not found at {esm_model_dir}. "
-        "Please download the model and place it in the 'models/' directory."
+        "Please download the model and place it in the 'ARG-CMCRR/' directory."
     )
 
 tokenizer = AutoTokenizer.from_pretrained(esm_model_dir, do_lower_case=False)
@@ -163,7 +160,7 @@ def run_blast_multi(
         raise FileNotFoundError(
             "BLAST executable not found.\n"
             "Please download NCBI BLAST+ and place it in:\n"
-            "ARG_CMCRR/blast/bin/"
+            "ARG-CMCRR/blast/bin/"
         )
     cmd = [
         blastp_path,
