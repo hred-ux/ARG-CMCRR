@@ -54,7 +54,7 @@ class MultiHeadSelfAttention(nn.Module):
         return self.proj(context)
 
 
-class RNNClassifier(nn.Module):
+class Classifier(nn.Module):
     def __init__(self, vocab_size=22, embedding_dim=128, hidden_dim=128, num_classes=18,
                  dropout=0.5):
         super().__init__()
