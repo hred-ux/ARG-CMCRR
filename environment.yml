@@ -1,0 +1,25 @@
+name: ARG-CMCRR
+channels:
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free
+  - defaults
+dependencies:
+  - python=3.9
+  - pip
+  - setuptools
+  - wheel
+  - tqdm=4.65.0
+  - pip:
+      - torch==2.0.0 --extra-index-url https://mirrors.aliyun.com/pytorch-wheels/cu118/
+      - torchvision==0.15.1 --extra-index-url https://mirrors.aliyun.com/pytorch-wheels/cu118/
+      - torchaudio==2.0.1 --extra-index-url https://mirrors.aliyun.com/pytorch-wheels/cu118/
+      - bio==1.6.2
+      - biopython==1.83
+      - einops==0.8.0
+      - fair-esm==2.0.0
+      - numpy==1.24.3
+      - pandas==2.0.2
+      - scikit-learn==1.2.2
+      - transformers==4.46.3
+      - xgboost==1.7.5
+      - joblib==1.2.0
