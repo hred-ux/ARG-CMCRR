@@ -3,11 +3,11 @@ import textwrap
 import torch
 
 parser = argparse.ArgumentParser(
-    prog='ARG_CMCRR',
+    prog='ARG-CMCRR',
     formatter_class=argparse.RawDescriptionHelpFormatter,
     description=textwrap.dedent("""\
     ╔══════════════════════════════════════════════════════════════════════════════╗
-    ║                             ARG_CMCRR                                        ║
+    ║                             ARG-CMCRR                                        ║
     ║     Deep Learning-Based Classification and Risk Assessment of                ║
     ║                  Antibiotic Resistance Genes (ARGs)                          ║
     ╚══════════════════════════════════════════════════════════════════════════════╝
@@ -22,9 +22,9 @@ parser = argparse.ArgumentParser(
     USAGE
     ─────
       Full-length sequences:
-        python ARG_CMCRR.py --input input_path_data --type aa/nt --length l  --outname output_file_name  --risk True/False
+        python ARG-CMCRR.py --input input_path_data --type aa/nt --length l  --outname output_file_name  --risk True/False
       Short reads:
-        python ARG_CMCRR.py --input input_path_data --type aa/nt --length s  --outname output_file_name  --risk True/False
+        python ARG-CMCRR.py --input input_path_data --type aa/nt --length s  --outname output_file_name  --risk True/False
 
     ARGUMENTS
     ─────────
