@@ -1,8 +1,8 @@
 # ARG-CMCRR
 
-## ARG_CMCRR: Deep Learning-Based Classification and Risk Ranking of Antibiotic Resistance Genes
+## ARG-CMCRR: Deep Learning-Based Classification and Risk Ranking of Antibiotic Resistance Genes
 
-ARG_CMCRR is a GPU-accelerated deep learning framework for the identification, functional classification, and risk ranking of antibiotic resistance genes (ARGs) from nucleotide or amino acid sequences.
+ARG-CMCRR is a GPU-accelerated deep learning framework for the identification, functional classification, and risk ranking of antibiotic resistance genes (ARGs) from nucleotide or amino acid sequences.
 
 The framework supports both full-length sequences and short sequencing reads, enabling its application to assembled genomes, plasmids, and metagenomic datasets.
 
@@ -10,7 +10,7 @@ The framework supports both full-length sequences and short sequencing reads, en
 
 ## 1. Overview
 
-ARG_CMCRR provides:
+ARG-CMCRR provides:
 
 * **ARG identification and functional classification**
 * **Risk level prediction (for full-length amino acid sequences)**
@@ -33,7 +33,7 @@ The framework integrates multiple deep neural network architectures tailored for
 * CUDA-compatible device (CUDA ≥ 11.x recommended)
 * ≥ 8 GB GPU memory recommended for long-sequence prediction
 
-ARG_CMCRR **must be executed on GPU**. CPU-only execution is not supported.
+ARG-CMCRR **must be executed on GPU**. CPU-only execution is not supported.
 
 To verify GPU availability:
 
@@ -57,7 +57,7 @@ True
 
 ## 3. Installation
 
-ARG_CMCRR uses Conda for environment management to ensure reproducibility.
+ARG-CMCRR uses Conda for environment management to ensure reproducibility.
 
 ### Step 1: Clone Repository
 
@@ -73,18 +73,18 @@ A fully specified computational environment is provided via environment.yml.
 Create the environment:
 
 ```bash
-conda env create -n arg_cmcrr -f environment.yml
+conda env create -n ARG-CMCRR -f environment.yml
 ```
 The installation process may take some time.
 
 Activate the environment:
 ```bash
-conda activate arg_cmcrr
+conda activate ARG-CMCRR
 ```
 ---
 ## 4. Download Required External Resources
 
-ARG_CMCRR requires two external resources:
+ARG-CMCRR requires two external resources:
 
 * ESM-2 protein language model
 
@@ -94,7 +94,7 @@ These resources must be downloaded manually before running the program.
 
 ### 4.1 Download ESM-2 Model
 
-ARG_CMCRR uses the ESM-2 (650M) protein language model.
+ARG-CMCRR uses the ESM-2 (650M) protein language model.
 
 Download from HuggingFace:
 ```bash
@@ -102,7 +102,7 @@ https://huggingface.co/facebook/esm2_t33_650M_UR50D
 ```
 After downloading, place the model files in the following directory:
 ```bash
-ARG_CMCRR/esm2_t33_650M/
+ARG-CMCRR/esm2_t33_650M/
 ```
 <img width="276" height="361" alt="image" src="https://github.com/user-attachments/assets/4bd51a8d-cd9a-4230-8c5b-c9ea3e0891ba" />
 
@@ -115,7 +115,7 @@ https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/
 ```
 After downloading and extracting, please rename the file as "blast". The directory structure is as follows:
 ```bash
-ARG_CMCRR/blast/bin/
+ARG-CMCRR/blast/bin/
 ```
 <img width="293" height="424" alt="image" src="https://github.com/user-attachments/assets/4aff3ec4-ccac-455e-a6f4-911e8ce1dcc7" />
 
@@ -124,7 +124,7 @@ ARG_CMCRR/blast/bin/
 ### General Command Structure
 
 ```
-python ARG_CMCRR.py \
+python ARG-CMCRR.py \
     --input <input_fasta> \
     --type <aa|nt> \
     --length <l|s> \
@@ -148,35 +148,35 @@ python ARG_CMCRR.py \
 ### 6.1 Full-Length Amino Acid Sequences (Classification + Risk)
 
 ```
-python ARG_CMCRR.py --input input_data_path  --type aa  --length l   --outfile results   --risk True
+python ARG-CMCRR.py --input input_data_path  --type aa  --length l   --outfile results   --risk True
 ```
 > 💡 **Try it out:** A sample test file is provided at `fastafile/aa_long_test.fasta`. You can use it to verify your installation:
 > ```
-> python ARG_CMCRR.py --input fastafile/aa_long_test.fasta  --type aa  --length l   --outfile results   --risk True
+> python ARG-CMCRR.py --input fastafile/aa_long_test.fasta  --type aa  --length l   --outfile results   --risk True
 > ```
 
 ### 6.2 Full-Length Amino Acid Sequences (Classification Only)
 
 ```
-python ARG_CMCRR.py --input input_data_path  --type aa  --length l   --outfile results   --risk False
+python ARG-CMCRR.py --input input_data_path  --type aa  --length l   --outfile results   --risk False
 ```
 
 ### 6.3 Full-Length Nucleotide Sequences
 
 ```
-python ARG_CMCRR.py --input input_data_path  --type nt  --length l   --outfile results  
+python ARG-CMCRR.py --input input_data_path  --type nt  --length l   --outfile results  
 ```
 
 ### 6.4 Short Amino Acid Reads
 
 ```
-python ARG_CMCRR.py --input input_data_path  --type aa  --length s   --outfile results 
+python ARG-CMCRR.py --input input_data_path  --type aa  --length s   --outfile results 
 ```
 
 ### 6.5 Short Nucleotide Reads 
 
 ```
-python ARG_CMCRR.py --input input_data_path  --type nt  --length s   --outfile results 
+python ARG-CMCRR.py --input input_data_path  --type nt  --length s   --outfile results 
 ```
 ---
 
@@ -206,7 +206,7 @@ The output file includes:
 
 ## 9. Internal Model Routing
 
-Depending on input parameters, ARG_CMCRR automatically dispatches prediction tasks to different modules:
+Depending on input parameters, ARG-CMCRR automatically dispatches prediction tasks to different modules:
 
 | Input Configuration    | Module Invoked            |
 | ---------------------- | ------------------------- |
@@ -229,7 +229,7 @@ Depending on input parameters, ARG_CMCRR automatically dispatches prediction tas
 
 ## 11. Citation
 
-ARG_CMCRR 
+ARG-CMCRR 
 
 ---
 
