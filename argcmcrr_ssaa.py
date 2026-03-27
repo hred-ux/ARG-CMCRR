@@ -1,6 +1,6 @@
 import torch
 from utils import process_ssaa
-from new_classifier_short import RNNClassifier
+from classifier import Classifier
 import pandas as pd
 from tqdm import tqdm
 import os
@@ -26,13 +26,13 @@ HIDDEN_DIM = 128
 NUM_CLASSES = 18
 NUM_MECHANISM = 6
 
-model_class = RNNClassifier(
+model_class = Classifier(
     vocab_size=VOCAB_SIZE,
     embedding_dim=EMBEDDING_DIM,
     hidden_dim=HIDDEN_DIM,
     num_classes=NUM_CLASSES
 )
-model_mech = RNNClassifier(
+model_mech = Classifier(
     vocab_size=VOCAB_SIZE,
     embedding_dim=EMBEDDING_DIM,
     hidden_dim=HIDDEN_DIM,
