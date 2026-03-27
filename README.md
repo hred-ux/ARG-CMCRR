@@ -111,7 +111,7 @@ Download NCBI BLAST+ from:
 ```bash
 https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/
 ```
-After downloading and extracting, please copy the bin file to the blast directory. The directory structure is as follows:
+After downloading and extracting, please rename the file as "blast". The directory structure is as follows:
 ```bash
 ARG_CMCRR/blast/bin/
 ```
