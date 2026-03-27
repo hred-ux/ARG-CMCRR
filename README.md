@@ -75,6 +75,7 @@ Create the environment:
 ```bash
 conda env create -n arg_cmcrr -f environment.yml
 ```
+The installation process may take some time.
 
 Activate the environment:
 ```bash
@@ -101,9 +102,10 @@ https://huggingface.co/facebook/esm2_t33_650M_UR50D
 ```
 After downloading, place the model files in the following directory:
 ```bash
-ARG_CMCRR/models/esm2_t33_650M/
+ARG_CMCRR/esm2_t33_650M/
 ```
-<img width="293" height="421" alt="image" src="https://github.com/user-attachments/assets/e05a0d64-8790-42a8-945a-ad19747b74ab" />
+<img width="276" height="361" alt="image" src="https://github.com/user-attachments/assets/4bd51a8d-cd9a-4230-8c5b-c9ea3e0891ba" />
+
 
 ### 4.2 Install NCBI BLAST+
 
