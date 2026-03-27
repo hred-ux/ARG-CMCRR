@@ -173,7 +173,7 @@ def run_blast_multi(
         "-num_threads", str(num_threads),
         "-out", out_file
     ]
-    subprocess.run(cmd, check=True)
+    subprocess.run(cmd, check=True, stderr=subprocess.DEVNULL)
 
 
 def blast_multi_fasta_risk(
