@@ -1,6 +1,6 @@
 import torch
 from utils import process_lsaa
-from new_classifier_short import RNNClassifier
+from classifier import Classifier
 import pandas as pd
 from tqdm import tqdm
 import os
